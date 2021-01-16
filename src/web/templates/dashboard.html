@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+	<link rel="stylesheet" href="/static/dashboard.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/misc.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/dashboard.css" type="text/css">
+	<!-- <link rel="stylesheet" href="/static/clock.css" type="text/css"> -->
+	<!-- <script type='text/javascript' src='/static/clock.js'></script> -->
+	<script type="text/javascript" src="/static/dashboard.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta charset='UFT-8' name='viewport' content='width=device-width, initial=scale=1.0' > -->
+</head>
+
+<body>
+
+	<div class="table-container">
+		
+		<div class="table-title"><p>{{ name }}Songs</p></div>
+
+		<table class="table-fill" id="alarm-table">
+			<thead>
+				<tr>
+					<th class="text-center">Name</th>
+					<th class="text-center">Artist</th>
+					<!-- <th class="text-center">Phone Number</th> -->
+					<!-- <th class="text-center">Alarm Time</th> -->
+					<!-- <th class="text-center">Type</th> -->
+					<!-- <th class="text-center">Repeat</th> -->
+					<th class="text-left"></th>
+				</tr>
+			</thead>
+
+			<tbody class="table-hover">
+				<tr>
+					<td class="text-left">WAP</td>
+					<td class="text-left">Cardi B</td>
+					<td><button class="add-button">+</button><button class="delete-button">-</button></td>
+				</tr>
+				<!-- <tr>
+					<td class="text-left" contenteditable>Ryan Mah</td>
+					<td class="text-left" contenteditable>asdf</td>
+					<td class="text-left" contenteditable>asdf</td>
+					<td>
+						<select></select>
+						<select></select>
+						<select></select>
+						<select></select>
+					</td>
+					<td>
+						<select>
+							<option value="sms">sms</option>
+							<option value="call">call</option>
+						</select>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+					<td>
+						<button type="button" onclick="add_row()" class="add-button">+</button><button type="button" class="delete-button">-</button>
+					</td>
+				</tr> -->
+
+			</tbody>
+		</table>
+<!-- 
+		<div style="text-align:center">
+			
+			<input type="button" value="Save" onclick="send_form()" class="save-button">
+			
+		</div> -->
+
+	</div>
+</body>
+{% endblock %}

@@ -1,0 +1,53 @@
+.delete-button {
+	background-color: #af4c4c; /* Green */
+	border: none;
+	color: white;
+	
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 9px;
+	padding-left: 9px;
+
+	justify-content: center;
+
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	
+	margin-left: 2px;
+	margin-right: 2px;
+}
+.add-button {
+	background-color: #43A047; /* Green */
+	border: none;
+	color: white;
+	
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 7.5px;
+	padding-left: 7.5px;
+
+	justify-content: center;
+
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+
+	margin-left: 2px;
+	margin-right: 2px;
+}
+.save-button {
+	background-color: #43A047; /* Green */
+	border: none;
+	color: white;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 25px;
+	padding-left: 25px;
+
+	font-size: 17px;
+	margin-top: 25px;
+}
