@@ -1,15 +1,23 @@
 import os
+import sys
 import flask
 import flask_login
 import datetime
-from routes import app_routes
+
+from login_routes import app_login
+# from dashboard_routes import app_dashboard
+
+THIS_DIR = os.path.abspath(os.path.dirname(__file__))
+PARENT_DIR = os.path.dirname(THIS_DIR)
+sys.path.append(PARENT_DIR)
+
 from credentials import *
 
 TIMEOUT_MINUTES = 2
 
 def app_init(app):
 	app.secret_key = APP_SECRET_KEY
-	app.register_blueprint(app_routes)
+	app.register_blueprint(app_login)
 	@app.before_request
 	def make_session_permanent():
 		flask.session.permanent = True

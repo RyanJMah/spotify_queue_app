@@ -1,24 +1,16 @@
 <html lang='en'>
 	<head>
-		<title>Ryan Mah | Alarm Clock</title>
+		<title>Login</title>
 		<meta charset='UFT-8' name='viewport' content='width=device-width, initial=scale=1.0' >
-		<link rel='stylesheet' type='text/css' href='/static/login.css'>
+		<link rel='stylesheet' type='text/css' href='/static/css/login.css'>
+		<script type="text/javascript" src = "/static/js/login.js"></script>
 	</head>
 	<body>
 		
 		<div class="login-page">
 			<div class="form">
-				<div class="text">Sign In</div>
-
-				<form class="login-form" method = "POST">
-					<input type="text" placeholder="Username" name="username" required>
-					<input type="password" placeholder="Password" name="password" required>
-					<button>login</button>
-				</form>
-				
-				{% for msg in get_flashed_messages() %}
-					<p class="message-error">{{ msg }}</p>
-				{% endfor %}
+				<img src="/static/Spotify-Logo.png" style="height: 18%; width: 100%;">
+				<button onclick="authenticate()">Log In With Spotify</button>
 			</div>
 		</div>
 		
