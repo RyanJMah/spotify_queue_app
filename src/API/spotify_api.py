@@ -48,13 +48,20 @@ secret = 'f5ee15641c8c41e6a4bb2541cde6765c'
 #secret = '1fca15b9415043db87a3571d1ecc90f9'
 
 if __name__ == "__main__":
-
+    '''
     if len(sys.argv) > 1:
         username = sys.argv[1]
     else:
         print("Usage: %s username" % (sys.argv[0],))
         sys.exit()
-
+    '''
+    playlist_id = None
+    username = input('username: ')
+    if playlist_id != None:
+        sp.playlist_add_items(playlist_id, items, position=None)
+    else:
+        user_playlist_create(username, 'Suggested Songs', public = False, collaborative = False, description ='Songs yet to be approved')
+        print(user_playlists()) #use this to get the playlist id
     #add_to_queue('0VjIjW4GlUZAMYd2vXMi3b', username, cid, secret, "http://localhost/")
     #user_info(username, cid, secret, "http://localhost/")
     #print(search('despacito'))
