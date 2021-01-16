@@ -1,6 +1,0 @@
-MARIADB_HOST = "34.94.124.216"
-MARIADB_USER = "admin"
-MARIADB_PASSWORD = "password"
-MARIADB_DATABASE = "spotify_app"
-APP_SECRET_KEY = "Kg*H5vxMYV!uncX!0j#!817MhXVGU2"
-
