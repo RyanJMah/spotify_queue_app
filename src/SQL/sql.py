@@ -44,6 +44,7 @@ def add_queue(session_id, guest_user, host_user, song_id, time, db = connect()):
     db.commit()
 
     db.close()
+    return
 
 def read_session(db = connect(), session_id = None):
     if (session_id == None):
@@ -71,7 +72,10 @@ def add_session(session_id, host_token, db = connect()):
 
     db.close()
 
+    return
+
 if __name__ == "__main__":
+    pass
     #add_queue('5213','urmom','you','yah','2364-00-00')
     #delete_queue('ram ranch')
     #add_session('1111', 'Test_Token')
