@@ -2,31 +2,33 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import sys
 import spotipy.util as util
+import random
+import string
 
-cid = 'e928528d94e84800aa53f32758c82ccc'
-secret = 'f5ee15641c8c41e6a4bb2541cde6765c'
+username = 'admin'
+token = 'BQD2R3QxQCSe7RMyFkvV0VGlVQ4eDdzBrwYVOKqEF8GInZp1kSkgLKQ9We5B1XG5lkGa5rv11Jsj5oMGsmhLPXfF4aeEhq-aLG_KGuoKP7Etv6E9iJatERHimMr-3aFxwBPlpstWt2vizkhR1knh06wP6kqlJRf643WHntRXM_sx9GmpuQ'
+sp = spotipy.Spotify(auth=token)
+cid = "41e6ecfe5cd341e2b51fd54476a626e6"
+secret = "1fca15b9415043db87a3571d1ecc90f9"
 
-#Ryan
-#cid = '41e6ecfe5cd341e2b51fd54476a626e6'
-#secret = '1fca15b9415043db87a3571d1ecc90f9'
+def search(q):
+    results = sp.search(q, type='track', limit = 5, offset = 0, market = 'US')
 
-scope = 'user-library-read'
+    tracks = []
+    for i in results['tracks']['items']:
+        tracks.append(i['id'])
 
-if len(sys.argv) > 1:
-    username = sys.argv[1]
-else:
-    print("Usage: %s username" % (sys.argv[0],))
-    sys.exit()
+    return tracks
 
-token = util.prompt_for_user_token(username, scope, client_id = cid, client_secret = secret, redirect_uri='http://localhost/')
+def add_to_queue(song_id):
+    sp.add_to_queue(song_id)
+    
+def skip_track():
+    sp.next_track()
 
-if token:
-    sp = spotipy.Spotify(auth=token)
-    client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
-
-    results = sp.current_user_saved_tracks()
-    for item in results['items']:
-        track = item['track']
-        print(track['name'] + ' - ' + track['artists'][0]['name'])
-else:
-    print("Can't get token for", username)
+if __name__ == "__main__":
+    pass
+    #sp.add_to_queue('4l62h4tiuUwn7eD6hxMlVQ', device_id='780ae0669fd0cf51fe0cc44eb63c7b0694fc6340')
+    #print(search('its every day bro'))
+    #add_to_queue('4l62h4tiuUwn7eD6hxMlVQ')
+    #print(sp.current_user())

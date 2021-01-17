@@ -1,14 +1,16 @@
-function authenticate() {
-	redirect_uri = "http://localhost"
-	url = 'https://accounts.spotify.com/authorize' +
-	      '?response_type=code' +
-          '&client_id=' + my_client_id +
-          (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-          '&redirect_uri=' + encodeURIComponent(redirect_uri);
+// URL = "http://localhost/login"
 
-	http = new XMLHttpRequest();
+function authenticate() {
+	var http = new XMLHttpRequest();
 	url = window.location.href;
-	
+	console.log(url)
+
+	http.onreadystatechange = function() {
+		if (http.readyState == XMLHttpRequest.DONE) {
+			// console.log(http.responseText);
+			window.location.href = http.responseText;
+		}
+	}
 	http.open("POST", url, true);
 	http.setRequestHeader("Content-type", "application/json");
 	http.send(JSON.stringify({"attempting_login": true}));

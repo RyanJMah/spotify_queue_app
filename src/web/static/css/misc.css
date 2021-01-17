@@ -51,3 +51,45 @@
 	font-size: 17px;
 	margin-top: 25px;
 }
+
+.green-button {
+	font-family: "Roboto", sans-serif;
+	/* font-family: "Open Sans"; */
+	font-weight: 590;
+	outline: 0;
+	border-radius: 25px;
+	background: #1ac720;
+	width: 80%;
+	border: 0;
+	/* padding: 15px  */
+	padding: 5%;
+	color: #FFFFFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+}
+
+.host-guest-button {
+	font-family: "Roboto", sans-serif;
+	/* font-family: "Open Sans"; */
+	font-weight: 590;
+	outline: 0;
+	border-radius: 25px;
+	background: #16bb1c;
+	width: 40%;
+	height: 8%;
+
+	margin-top: 1%;
+	margin-bottom: 1%;
+
+	text-align: center;
+	border: 0;
+	/* padding: 15px  */
+	padding: 3%;;
+	color: #FFFFFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+}
