@@ -7,7 +7,7 @@ PARENT_DIR = os.path.dirname(THIS_DIR)
 sys.path.append(PARENT_DIR)
 
 from credentials import *
-
+#print(APP_SECRET_KEY)
 API_BASE = "https://accounts.spotify.com"
 REDIRECT_URI = "http://localhost/spotify_token_callback"
 SCOPES = [
