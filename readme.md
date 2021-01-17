@@ -33,5 +33,5 @@ The purpose of this application is to allow users to queue for songs to be playe
 
 | Requirement | Comments |
 | - | - |
-| The UI should look good. | - |
+| The UI should be user-friendly and aesthetically pleasing. | - |
 | Database should perform well, even under stress. | - |
