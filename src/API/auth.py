@@ -13,7 +13,10 @@ REDIRECT_URI = "http://localhost/spotify_token_callback"
 SCOPES = [
 	"user-modify-playback-state",
 	"user-follow-modify",
-	"user-read-playback-state"
+	"user-read-playback-state",
+	"user-follow-read",
+	"playlist-read-private",
+	"playlist-modify-private",
 ]
 
 # def get_auth_url(redirect_uri, scopes, show_dialog = True):
@@ -42,5 +45,5 @@ def get_auth_token(code):
 			"client_secret": SPOTIFY_CLIENT_SECRET
 		}
 	)
-	print(res.json())
+	# print(res.json())
 	return res

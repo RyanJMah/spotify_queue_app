@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/static/css/main.css" type="text/css">
 	<!-- <link rel="stylesheet" href="/static/clock.css" type="text/css"> -->
 	<!-- <script type='text/javascript' src='/static/clock.js'></script> -->
-	<script type="text/javascript" src="/static/dashboard.js"></script>
+	<script type="text/javascript" src="/static/js/host_dashboard.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <meta charset='UFT-8' name='viewport' content='width=device-width, initial=scale=1.0' > -->
@@ -17,6 +17,16 @@
 <body>
 
 	<div class="generic-container" style="background-color: #ffffff; margin-left: 5%; margin-right: 5%;">
+		<div class="table-title" style="font-size: 24px;">Session ID: {{ session_id }}</div>
+		<br>
+
+	
+		<img src="{{ current_song.img_url }}" style="height: 400px; padding-bottom: 1%;">
+		<div class="table-title" style="font-size: 32px;"><b>Currently Playing: </b>{{ current_song.name }} - {{ current_song.artist }}</div>
+		
+		<br>
+		<br>
+
 		<div class="table-title" style="font-size: 32px;"><p>Queued Songs</p></div>
 		<table class="table-fill" style="width: 75%;" id="queued-table">
 			<thead>
@@ -27,10 +37,10 @@
 			</thead>
 
 			<tbody class="table-hover">
-				{% for song in songs %}
+				{% for song in queued_songs %}
 				<tr>
-					<td class="text-left">{{ song.name }}</td>
-					<td class="text-left">{{ song.artist }}</td>
+					<td class="text-center">{{ song.name }}</td>
+					<td class="text-center">{{ song.artist }}</td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -39,52 +49,32 @@
 		<br>
 		<br>
 
-		<div class="table-title"><p>Requested Songs</p></div>
-		<table class="table-fill" id="requested-table">
+		<div class="table-title" style="font-size: 20px;"><p>Requested Songs</p></div>
+		<table class="table-fill" id="requested-table" style="width: 50%;">
 			<thead>
 				<tr>
+					<th class="text-center">Requested By</th>
 					<th class="text-center">Name</th>
 					<th class="text-center">Artist</th>
-					<!-- <th class="text-center">Phone Number</th> -->
-					<!-- <th class="text-center">Alarm Time</th> -->
-					<!-- <th class="text-center">Type</th> -->
-					<!-- <th class="text-center">Repeat</th> -->
 					<th class="text-left"></th>
 				</tr>
 			</thead>
 
 			<tbody class="table-hover">
+				{% for song in requested_songs %}
 				<tr>
-					<td class="text-left">WAP</td>
-					<td class="text-left">Cardi B</td>
-					<td><button class="add-button">+</button><button class="delete-button">-</button></td>
+					<td class="text-center">{{ song.requested_by }}</td>
+					<td class="text-center">{{ song.name }}</td>
+					<td class="text-center">{{ song.artist }}</td>
+					<td><button class="add-button" onclick="queue_song(this)">+</button><button class="delete-button" onclick="remove_song(this)">-</button></td>
 				</tr>
-				<!-- <tr>
-					<td class="text-left" contenteditable>Ryan Mah</td>
-					<td class="text-left" contenteditable>asdf</td>
-					<td class="text-left" contenteditable>asdf</td>
-					<td>
-						<select></select>
-						<select></select>
-						<select></select>
-						<select></select>
-					</td>
-					<td>
-						<select>
-							<option value="sms">sms</option>
-							<option value="call">call</option>
-						</select>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-					<td>
-						<button type="button" onclick="add_row()" class="add-button">+</button><button type="button" class="delete-button">-</button>
-					</td>
-				</tr> -->
-
+				{% endfor %}
 			</tbody>
 		</table>
+
+		<!-- <br> -->
+		<!-- <button class="green-button" style="width: 15%; padding-top: 1%; padding-bottom: 1%;">Save</button> -->
+
 <!-- 
 		<div style="text-align:center">
 			

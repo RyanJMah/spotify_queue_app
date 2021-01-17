@@ -1,0 +1,53 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+<head>
+	<link rel="stylesheet" href="/static/css/misc.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/dashboard.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/main.css" type="text/css">
+	<!-- <link rel="stylesheet" href="/static/clock.css" type="text/css"> -->
+	<!-- <script type='text/javascript' src='/static/clock.js'></script> -->
+	<script type="text/javascript" src="/static/js/guest_dashboard.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta charset='UFT-8' name='viewport' content='width=device-width, initial=scale=1.0' > -->
+</head>
+
+<body>
+
+	<div class="generic-container" style="background-color: #ffffff; margin-left: 0.1%; margin-right: 0.1%;">
+		<div class="table-title" style="font-size: 24px;">Session ID: {{ session_id }}</div>
+		<br>
+	
+		<img src="{{ current_song.img_url }}" style="height: 400px; padding-bottom: 1%;">
+		<div class="table-title" style="font-size: 32px;"><b>Currently Playing: </b>{{ current_song.name }} - {{ current_song.artist }}</div>
+		
+		<br>
+		<br>
+
+		<form method="POST">
+			<input type="text" placeholder="Song" name="song" style="width: 50%; margin-bottom: 2%; margin-top: 0.1%;" required>
+			<br>
+			<button class="green-button" style="width: 15%; padding-top: 1%; padding-bottom: 1%;">Search</button>
+		</form>
+		<!-- <div class="table-title" style="font-size: 20px;"><p>Queued Songs</p></div>
+		<table class="table-fill" id="requested-table">
+			<thead>
+				<tr>
+					<th class="text-center">Name</th>
+					<th class="text-center">Artist</th>
+					<th class="text-left"></th>
+				</tr>
+			</thead> -->
+
+
+<!-- 
+		<div style="text-align:center">
+			
+			<input type="button" value="Save" onclick="send_form()" class="save-button">
+			
+		</div> -->
+
+	</div>
+</body>
+{% endblock %}
