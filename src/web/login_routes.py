@@ -23,7 +23,8 @@ def login():
 
 	return flask.render_template("login.html")
 
-
+if __name__ == "__main__":
+	login()
 
 # @app_routes.route("/host/dashboard", methods = ["GET", "POST"])
 # @flask_login.login_required
