@@ -6,6 +6,7 @@ import random
 import string
 from credentials import *
 
+
 #cid = "41e6ecfe5cd341e2b51fd54476a626e6"
 #secret = "1fca15b9415043db87a3571d1ecc90f9"
 
@@ -27,18 +28,44 @@ def skip_track(token):
     sp = spotipy.Spotify(auth=token)
     sp.next_track()
 
+def current_song_info(token):
+    sp = spotipy.Spotify(auth=token)
+    info = sp.current_playback()
+
+    artists = ''
+    for artist in info['item']['artists']:
+        if artists == '':
+            artists = artist['name']
+        else:
+            artists = artists + ', ' + artist['name']
+
+    print(artists)
+
+    return {'name':info['item']['name'], 'artist':artists, 'img_url':info['item']['album']['images'][0]['url']}
+
+def search_song_info(token, song_id):
+    sp = spotipy.Spotify(auth=token)
+    info = sp.track(song_id)
+
+    artists = ''
+    for artist in info['item']['artists']:
+        if artists == '':
+            artists = artist['name']
+        else:
+            artists = artists + ', ' + artist['name']
+
+    return {'name':info['item']['name'], 'artist':artists, 'img_url':info['item']['album']['images'][0]['url']}
+
+
 if __name__ == "__main__":
-    token = 'BQC-pBzh26INfN3SbPrf0u1YSZf7ZmTcYFDd2r3PqTft3cXPGBmKp9lV-o7xa01NAf6oVU5teqJJGBc5Jl3j6Erasc9FicpXuhaVjiy1S8rGG2sv7pAuTPWjT2PsdYOP7nMI5Wzo47XejAshWae1z1zhsl10'
-    search(token, "john mayer")
+    token = 'BQBnwEVux0M9ywTT279zRsH3qBH6K6sqqqN2xis9YEA1n6VBlpgsr1_k-KeVGP4wyunVYGAi06VtWXKCgUV3GikMc5PrxQ_zOyMOSHJsHxuZHkK5Dn8-3AMWqtGY1Fe_gG1iiIMFq0p7IJ1YqrdtGQ7RIckvuV8Lck_9_t1ixmdvow'
+    #print(search(token, "john mayer"))
     #sp.add_to_queue('4l62h4tiuUwn7eD6hxMlVQ', device_id='780ae0669fd0cf51fe0cc44eb63c7b0694fc6340')
     #print(search('its every day bro'))
     #add_to_queue('4l62h4tiuUwn7eD6hxMlVQ')
-<<<<<<< HEAD
-<<<<<<< HEAD
     #print(sp.current_user())
-=======
     #print(sp.current_user())
->>>>>>> 9bccb939993f780992440cd78c2da8307e0b7ca7
-=======
     #print(sp.current_user())
->>>>>>> 87e22fde60baa3bd66a27f129d7fc6712b0ec04a
+    #current_song_info(token)
+    #search_song_info(token, '4l62h4tiuUwn7eD6hxMlVQ')
+    pass
