@@ -28,8 +28,11 @@ def delete_queue(song_id, db = connect()):
     db.close()
     return
 
-def read_queue(db = connect()):
-    df = pd.read_sql("SELECT * FROM queues", db)
+def read_queue(db = connect(), q = None):
+    if (q == None):
+        df = pd.read_sql("SELECT * FROM queues", db)
+    else:
+        df = pd.read_sql(f"SELECT * FROM queues WHERE session_id = {q}", db)
     db.close()
     return df
 
@@ -42,9 +45,7 @@ def add_queue(session_id, guest_user, host_user, song_id, time, db = connect()):
 
     db.close()
 
-#def del_queue(db = connect())
-
 if __name__ == "__main__":
     #add_queue('5213','urmom','you','yah','2364-00-00')
     delete_queue('ram ranch')
-    print(read_queue())
+    print(read_queue(q = 5213))
