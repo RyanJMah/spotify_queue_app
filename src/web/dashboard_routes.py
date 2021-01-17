@@ -101,6 +101,8 @@ def dashboard_host():
 		if requested_songs != []:
 			flask.session["requested_songs"] += requested_songs
 
+		print(flask.session["requested_songs"])
+
 		curr_song = spotify_api.current_song_info(flask.session["toke"])
 		queued_songs = [
 			{"name": "WAP", "artist": "Cardi B"},
@@ -118,8 +120,8 @@ def dashboard_host():
 			session_id = flask.session["session_id"],
 			page_name = "Host",
 			current_song = curr_song,
-			queued_songs = queued_songs,
-			# queue_song = spotify_api.get_playlist_queue(flask.session["toke"], flask.session["playlist_id"], curr_song["song_id"]),
+			# queued_songs = queued_songs,
+			queued_songs = spotify_api.get_playlist_queue(flask.session["toke"], flask.session["playlist_id"]),
 			requested_songs = flask.session["requested_songs"]
 		)
 	else:

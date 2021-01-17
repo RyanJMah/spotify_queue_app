@@ -102,22 +102,22 @@ def rem_from_playlist(token, playlist_id, items):
 	sp = spotipy.Spotify(auth = token)
 	sp.playlist_remove_all_occurrences_of_items(playlist_id, items)
 
-def get_playlist_queue(token, playlist_id):
-	sp = spotipy.Spotify(auth = token)
+# def get_playlist_queue(token, playlist_id):
+# 	sp = spotipy.Spotify(auth = token)
 
-	playlist_length = len(sp.playlist(playlist_id)['tracks']['items'])
-	#Hardcoded for now
-	song_position = 0
-	temp = sp.playlist(id)['tracks']['items']
-	ret = []
-	if(playlist_length - song_position < 5):
-		for i in range(song_position,playlist_length-1,1):
-			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
-	else:
-		for i in range(song_position,5+song_position,1):
-			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
-	#print(ret)
-	return ret
+# 	playlist_length = len(sp.playlist(playlist_id)['tracks']['items'])
+# 	#Hardcoded for now
+# 	song_position = 0
+# 	temp = sp.playlist(id)['tracks']['items']
+# 	ret = []
+# 	if(playlist_length - song_position < 5):
+# 		for i in range(song_position,playlist_length-1,1):
+# 			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
+# 	else:
+# 		for i in range(song_position,5+song_position,1):
+# 			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
+# 	#print(ret)
+# 	return ret
 
 def get_pos_by_id(token, song_id):
 	sp = spotipy.Spotify(auth=token)
@@ -128,22 +128,60 @@ def get_pos_by_id(token, song_id):
 		pos += 1
 	return None
 
-def get_playlist_queue(token, playlist_id, song_id):
-	sp = spotipy.Spotify(auth=token)
+# def get_playlist_queue(token, playlist_id, song_id):
+# 	sp = spotipy.Spotify(auth=token)
 
-	playlist_length = len(sp.playlist(playlist_id)['tracks']['items'])
-	#Hardcoded for now
-	song_position = get_pos_by_id(token, song_id)
-	temp = sp.playlist(id)['tracks']['items']
-	ret = []
-	if(playlist_length - song_position < 5):
-		for i in range(song_position,playlist_length-1,1):
-			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
-	else:
-		for i in range(song_position,5+song_position,1):
-			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
-	#print(ret)
-	return ret
+# 	playlist_length = len(sp.playlist(playlist_id)['tracks']['items'])
+# 	#Hardcoded for now
+# 	song_position = get_pos_by_id(token, song_id)
+# 	temp = sp.playlist(id)['tracks']['items']
+# 	ret = []
+# 	if(playlist_length - song_position < 5):
+# 		for i in range(song_position,playlist_length-1,1):
+# 			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
+# 	else:
+# 		for i in range(song_position,5+song_position,1):
+# 			ret.append(get_song_info_by_id(token, temp[i]['track']['id']))
+# 	#print(ret)
+# 	return ret
+def playlist_song_titles(token, playlist_id):
+    sp = spotipy.Spotify(auth=token)
+    info = sp.playlist_items(playlist_id)
+
+    song_names = []
+    for song in info['items']:
+        song_names.append(song['track']['name'])
+    return song_names
+
+def get_playlist_queue(token, playlist_id):
+    sp = spotipy.Spotify(auth=token)
+
+    song_position = 0
+    song = current_song_info(token)
+    current_song = song['name']
+    #search within list of playlist to find current_song position
+    songlist = playlist_song_titles(token, playlist_id)  
+    for position in range(len(songlist)):
+        if current_song == songlist[position]:
+            song_position = position + 1
+            break
+    
+    tracklist = sp.playlist_tracks(playlist_id, fields = None, limit = 5, offset = song_position, market = None)
+
+    queue = []
+    if (tracklist["total"] - song_position) < 5:
+        for i in range(tracklist["total"] - song_position):
+            song_id = tracklist['items'][i]['track']['id']
+            info = get_song_info_by_id(token, song_id)
+            queue.append(info)
+    else:
+        for i in range(5):
+            song_id = tracklist['items'][i]['track']['id']
+            # Dic['item']['track']['id']
+            info = get_song_info_by_id(token, song_id)
+            queue.append(info)
+
+    return queue
 
 
 if __name__ == "__main__":

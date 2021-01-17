@@ -10,6 +10,7 @@ from credentials import *
 
 API_BASE = "https://accounts.spotify.com"
 REDIRECT_URI = "http://localhost/spotify_token_callback"
+# REDIRECT_URI = "http://34.94.124.216/spotify_token_callback"
 SCOPES = [
 	"user-modify-playback-state",
 	"user-follow-modify",
