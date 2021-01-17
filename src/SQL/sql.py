@@ -17,17 +17,17 @@ def read_queue(db = connect()):
     db.close()
     return df
 
-def add_queue(guest_user, host_user, song_name, artist_name, time, db = connect()):
+def add_queue(session_id, guest_user, host_user, song_id, time, db = connect()):
     cursor = db.cursor()
-    sql = "INSERT INTO queues(guest_user, host_user, song_name, artist_name, time) VALUES (%s, %s, %s, %s, %s)"
-    val = (guest_user, host_user, song_name, artist_name, time)
+    sql = "INSERT INTO queues(session_id, guest_user, host_user, song_id, time) VALUES (%s, %s, %s, %s, %s)"
+    val = (session_id, guest_user, host_user, song_id, time)
     cursor.execute(sql,val)
     db.commit()
 
     db.close()
 
-def del_queue(db = connect()):
+#def del_queue(db = connect())
 
 if __name__ == "__main__":
-    add_queue('test','test','test','test','0000-00-00')
+    add_queue('5214','test','test','test','0000-00-00')
     print(read_queue())
