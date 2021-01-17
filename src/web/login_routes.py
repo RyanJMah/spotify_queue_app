@@ -26,21 +26,6 @@ def index():
 @app_login.route("/login", methods = ["POST", "GET"])
 def login():
 	if flask.request.method == "POST":
-<<<<<<< HEAD
-		print(flask.request.json)
-		print(type(flask.request.json))
-
-	return flask.render_template("login.html")
-
-if __name__ == "__main__":
-	login()
-
-# @app_routes.route("/host/dashboard", methods = ["GET", "POST"])
-# @flask_login.login_required
-# def dashboard():
-# 	if flask.request.method == "POST":
-# 		handlers.upload_alarm_handler(flask.request.json)
-=======
 		print(flask.request.form)
 		auth_url = auth.get_auth_url()
 		return auth_url
@@ -58,7 +43,6 @@ def spotify_token_callback():
 
 	print(flask.session["toke"])
 	return flask.redirect(flask.url_for("app_dashboard.join_or_host"))
->>>>>>> 9bccb939993f780992440cd78c2da8307e0b7ca7
 
 
 
