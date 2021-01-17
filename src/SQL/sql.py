@@ -18,33 +18,33 @@ def connect():
             database = MARIADB_DATABASE
         )
     return db
-"""
-def delete_queue(song_name, db = connect()):
+
+def delete_queue(song_id, db = connect()):
 
     cursor = db.cursor()
-    sql = f"DELETE FROM 'queues' WHERE 'song_name' = {song_name}"
+    sql = f"DELETE FROM queues WHERE song_id = '{song_id}'"
     cursor.execute(sql)
     db.commit()
     db.close()
     return
-"""
+
 def read_queue(db = connect()):
     df = pd.read_sql("SELECT * FROM queues", db)
     db.close()
     return df
 
-def add_queue(guest_user, host_user, song_name, artist_name, time, db = connect()):
+def add_queue(session_id, guest_user, host_user, song_id, time, db = connect()):
     cursor = db.cursor()
-    sql = "INSERT INTO queues(guest_user, host_user, song_name, artist_name, time) VALUES (%s, %s, %s, %s, %s)"
-    val = (guest_user, host_user, song_name, artist_name, time)
+    sql = "INSERT INTO queues(session_id, guest_user, host_user, song_id, time) VALUES (%s, %s, %s, %s, %s)"
+    val = (session_id, guest_user, host_user, song_id, time)
     cursor.execute(sql,val)
     db.commit()
 
     db.close()
 
-def del_queue(db = connect()):
-    pass
+#def del_queue(db = connect())
 
 if __name__ == "__main__":
-    #add_queue('3','urmom','garbage','everyday bro','1111-11-11')
+    #add_queue('5213','urmom','you','yah','2364-00-00')
+    delete_queue('ram ranch')
     print(read_queue())
