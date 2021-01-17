@@ -1,10 +1,11 @@
-{% extends "base.html" %}
+{% extends "navbar.html" %}
 
 {% block content %}
 <head>
 	<link rel="stylesheet" href="/static/dashboard.css" type="text/css">
 	<link rel="stylesheet" href="/static/css/misc.css" type="text/css">
 	<link rel="stylesheet" href="/static/css/dashboard.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/main.css" type="text/css">
 	<!-- <link rel="stylesheet" href="/static/clock.css" type="text/css"> -->
 	<!-- <script type='text/javascript' src='/static/clock.js'></script> -->
 	<script type="text/javascript" src="/static/dashboard.js"></script>
@@ -15,11 +16,31 @@
 
 <body>
 
-	<div class="table-container">
-		
-		<div class="table-title"><p>{{ name }}Songs</p></div>
+	<div class="generic-container" style="background-color: #ffffff; margin-left: 5%; margin-right: 5%;">
+		<div class="table-title" style="font-size: 32px;"><p>Queued Songs</p></div>
+		<table class="table-fill" style="width: 75%;" id="queued-table">
+			<thead>
+				<tr>
+					<th class="text-center">Name</th>
+					<th class="text-center">Artist</th>
+				</tr>
+			</thead>
 
-		<table class="table-fill" id="alarm-table">
+			<tbody class="table-hover">
+				{% for song in songs %}
+				<tr>
+					<td class="text-left">{{ song.name }}</td>
+					<td class="text-left">{{ song.artist }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<br>
+		<br>
+
+		<div class="table-title"><p>Requested Songs</p></div>
+		<table class="table-fill" id="requested-table">
 			<thead>
 				<tr>
 					<th class="text-center">Name</th>

@@ -3,25 +3,26 @@ NOTE: I DID NOT WRITE THIS CODE. IT WAS FOUND HERE:
 	- https://codepen.io/deliciouslycheesy/pen/XBRgYa
 */
 
-html {
-	padding-top: 35px;
-	padding-left: 200px;
-	padding-right: 200px;
-	margin: auto;
-	background: #2d2d2d;
-}
+
 body {
 	font-family: 'Open Sans', sans-serif;
 }
 
 .table-container {
 	width: auto;
-	padding-top: 1px;
+	padding-top: 10%;
+	padding-bottom: 3%;
+
+	/* padding-top: 1px;
 	padding-bottom: 30px;
 	padding-right: 10px;
-	padding-left: 10px; 
+	padding-left: 10px;  */
 	margin: auto;
-	background:#cacaca;
+	margin-left: 15%;
+	margin-right: 15%;
+
+	background: #f0f0f0;
+	/* background:#cacaca; */
 	justify-content: center;
 	justify-items: center;
 	box-shadow: 1px 1px;
@@ -30,9 +31,9 @@ body {
 .table-title p {
 	color: rgb(43, 42, 42);
 	text-align: center;
-	font-size: 35;
-	margin-top: 30px;
-	margin-bottom: 20px;
+	font-size: 40;
+	/* margin-top: 30px;
+	margin-bottom: 20px; */
 }
 
 
@@ -50,7 +51,7 @@ body {
  
 th {
 	color:#D5DDE5;;
-	background:#0c3ea3;
+	background:#292929;
 
 	border-bottom: 2px solid #9c9c9c;
 	border-right: 1px solid #9c9c9c;
@@ -94,12 +95,13 @@ tr:last-child td:last-child {
 }
  
 td {
-	background:#FFFFFF;
+	background:#e6e6e6;
 	padding: 10px;
 	text-align: left;
 	vertical-align: middle;
 	font-weight: 300;
 	font-size: 14px;
+	
 	/* border-right: 1px solid #000000; */
 	border-left: 1px solid #9c9c9c;
 }

@@ -5,6 +5,7 @@ import flask_login
 from werkzeug.security import generate_password_hash, check_password_hash
 from sql import delete_queue
 
+<<<<<<< HEAD
 @app_dashboard.route("/dashboard", methods = ["GET", "POST", "DELETE"])
 def dashboard():
     if flask.request.method == "POST":
@@ -32,3 +33,26 @@ def dashboard():
 
 	return flask.render_template("dashboard.html")
 """
+=======
+app_dashboard = flask.Blueprint("app_dashboard", __name__, template_folder = "templates")
+
+@app_dashboard.route("/join-or-host")
+def join_or_host():
+	if "toke" in flask.session.keys():
+		return flask.render_template("join_or_host.html", page_name = "Host")
+	else:
+		return flask.abort(403)
+
+@app_dashboard.route("/dashboard/host")
+def dashboard_host():
+	if "toke" in flask.session.keys():
+		songs = [
+			{"name": "WAP", "artist": "Cardi B"},
+			{"name": "asdfasdf", "artist": "Ryan Mah"}
+		]
+
+		return flask.render_template("host_dashboard.html", page_name = "Host", songs = songs)
+	else:
+		return flask.abort(403)
+
+>>>>>>> 9bccb939993f780992440cd78c2da8307e0b7ca7

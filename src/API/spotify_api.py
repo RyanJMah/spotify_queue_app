@@ -31,4 +31,8 @@ if __name__ == "__main__":
     #sp.add_to_queue('4l62h4tiuUwn7eD6hxMlVQ', device_id='780ae0669fd0cf51fe0cc44eb63c7b0694fc6340')
     #print(search('its every day bro'))
     #add_to_queue('4l62h4tiuUwn7eD6hxMlVQ')
+<<<<<<< HEAD
     #print(sp.current_user())
+=======
+    #print(sp.current_user())
+>>>>>>> 9bccb939993f780992440cd78c2da8307e0b7ca7
